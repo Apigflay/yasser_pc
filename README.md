@@ -3,7 +3,7 @@ yasser 新官网  pc端
 
 # 1.进入一个目录，创建项目  
 
-vue create 'projectName'  不支持驼峰
+vue create 'project_name'  不支持驼峰
 
 # 2.我们这里选择手动配置
 
@@ -46,7 +46,7 @@ Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)
 键入N不记录，如果键入Y需要输入保存名字，如第2步所看到的我保存的名字为 vue_demo
 
 # 8 创建完成
- $ cd yasser_pc1
+ $ cd yasser_pc
  $ npm run serve
 
  # 9 vue cli4.x 项目启动后自动开启浏览器配置
@@ -55,4 +55,41 @@ Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)
 
 "serve": "vue-cli-service serve --open",
 
-# 10 
+# 10 增加热更新
+  新建  vue.config.js
+  module.exports = {
+
+    devServer: {
+		compress: true,
+		disableHostCheck: true, //webpack4.0 开启热更新
+	}
+
+  }
+  
+  packge.json 修改
+  "serve": "vue-cli-service serve && webpack-dev-server --open",
+
+  重启
+
+# 11 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://whyphoto.lamost.org/
+https://www.zcool.com.cn/work/ZMjE1NzM3MDg=.html
