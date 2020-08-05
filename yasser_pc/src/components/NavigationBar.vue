@@ -71,17 +71,23 @@
                     <use xlink:href="#icon-tangmumao-"></use>
                 </svg>
                 <div class="languageArea">
-                    <svg class="icon" aria-hidden="true" @mouseenter="goLanguageArea(1)" @mouseleave="goLanguageArea(2)">
+                     <svg class="icon" aria-hidden="true" v-if="language==1"  @mouseenter="goLanguageArea(1)">
                         <use xlink:href="#icon-CN"></use>
                     </svg>
+                    <svg class="icon" aria-hidden="true" v-if="language==2"  @mouseenter="goLanguageArea(1)">
+                        <use xlink:href="#icon-en"></use>
+                    </svg>
+                    <svg class="icon" aria-hidden="true" v-if="language==3"  @mouseenter="goLanguageArea(1)">
+                        <use xlink:href="#icon-fantizhongwenicon"></use>
+                    </svg>
                     <div class="languegeBox" v-if="languageArea">
-                        <svg class="icon" aria-hidden="true">
+                        <svg class="icon" aria-hidden="true" key="1" @click="changeLanguage(1)">
                             <use xlink:href="#icon-CN"></use>
                         </svg>
-                        <svg class="icon" aria-hidden="true">
+                        <svg class="icon" aria-hidden="true" key="2" @click="changeLanguage(2)">
                             <use xlink:href="#icon-en"></use>
                         </svg>
-                        <svg class="icon" aria-hidden="true">
+                        <svg class="icon" aria-hidden="true" key="3" @click="changeLanguage(3)">
                             <use xlink:href="#icon-fantizhongwenicon"></use>
                         </svg>
                     </div>
@@ -109,14 +115,23 @@ export default {
           console.log(id)
           if(id==1){
               this.languageArea=true;
-          }else if(id==2){
-            //   this.languageArea=false;
           }
-          var that = this;
-          clearTimeout(timer)
-          var timer = setTimeout(function(){
-              that.languageArea=false;
-          },5000)
+        //   var that = this;
+        //   clearTimeout(timer)
+        //   var timer = setTimeout(function(){
+        //       that.languageArea=false;
+        //   },5000)
+      },
+      changeLanguage:function(id){
+          console.log(id)
+          this.languageArea=false;
+          if(id==1){
+              this.language=1;
+          }else if(id==2){
+              this.language=2;
+          }else if(id==3){
+              this.language=3;
+          }
       }
   }
 }
