@@ -71,8 +71,30 @@ Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)
 
   重启
 
-# 11 
+# 11 使用iconfont 彩色图标
 
+ <script src="//at.alicdn.com/t/font_607479_a4pgo1tfvyd.js"></script>
+
+ import '@/iconfont/iconfont.js';/*引入iconfont图标*/
+
+ .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+<svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-haimianbaobao-"></use>
+</svg>
+
+.icon {
+  width: 35px!important;
+  height: 35px!important;
+}
+
+# 12 
 
 
 
