@@ -11,7 +11,7 @@
       <use xlink:href="#icon-haimianbaobao-"></use>
     </svg>
   
-    <!-- <KeepOnRecord></KeepOnRecord>   -->
+    <KeepOnRecord></KeepOnRecord>  
   </div>
 </template>
 

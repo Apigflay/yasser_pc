@@ -92,7 +92,6 @@
                         </svg>
                     </div>
                 </div>
-                
             </div>
         </div>
   </div>
@@ -116,11 +115,11 @@ export default {
           if(id==1){
               this.languageArea=true;
           }
-        //   var that = this;
-        //   clearTimeout(timer)
-        //   var timer = setTimeout(function(){
-        //       that.languageArea=false;
-        //   },5000)
+          var that = this;
+          clearTimeout(timer)
+          var timer = setTimeout(function(){
+              that.languageArea=false;
+          },5000)
       },
       changeLanguage:function(id){
           console.log(id)
@@ -176,9 +175,13 @@ export default {
             .icon{
                 width: 20px!important;
                 height: 20px!important;
+                background-color:yellow;
             }
             .languegeBox{
-                background: red;
+                // background: red;
+                .icon{
+                    background: yellow;
+                }
             }
         }
         .icon{
