@@ -2,7 +2,7 @@
   <div class="footerWrap">
     <div class="KeepOnRecordArea">
         <a href="http://www.beian.miit.gov.cn" target="_blank"><p class="p1">豫ICP备18010911号</p></a>
-        <p class="p2">A FLAY PAG 提供于 HANGZHOU</p>
+        <p class="p2">A FLAY PAG 提供于 HANGZHOU </p>
     </div>
     
   </div>
