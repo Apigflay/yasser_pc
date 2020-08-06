@@ -1,12 +1,14 @@
 <template>
   <div class="homePage">
     <!-- <div class="homeArea"> -->
-        <NavigationBar></NavigationBar>
+        <NavigationBar :language="language" @getChirldrenMethod="getChirldrenMethod"></NavigationBar>
     <!-- </div> -->
     
-    1 2
     
-
+    {{language}}
+    <Toast></Toast>
+    <span @click="texttoast(1)"> hahhhh</span>
+    <span @click="texttoast(2)"> none</span>
     <svg class="icon" aria-hidden="true">
       <use xlink:href="#icon-haimianbaobao-"></use>
     </svg>
@@ -29,11 +31,28 @@ export default {
   created() {
   },
   computed:{
+    language(){
+      return this.$store.getters['AllallLanguage']
+    }
   },
   watch:{
 
   },
   methods:{
+    getChirldrenMethod:function(msg){
+      this.$store.commit['set_allLanguage',msg]
+    },
+    texttoast:function(id){
+      if(id==1){
+        console.log(this)
+        this.$Toast(true,'哈哈哈')
+      }else if(id==2){
+        console.log(this)
+        this.$Toast(false)
+      }
+      
+      
+    }
   },
   beforeMount(){
   },

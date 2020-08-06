@@ -21,16 +21,16 @@ export default {
 <style scoped lang="scss">
 .footerWrap{
     width: 100%;
-    height: 92px;
     background: #0d3c55;
-    padding: 40px 0;
     border-top: 1px solid #000;
     border-bottom: 1px solid #fff;
 }
 .KeepOnRecordArea{
+  padding: 40px 0;
   width: 1200px;
   height: 92px;
   margin: auto;
+  background: #0d3c55;
   .p1{
     line-height: 28px;
     font-size: 16px;

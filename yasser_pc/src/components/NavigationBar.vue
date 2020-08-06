@@ -71,24 +71,24 @@
                     <use xlink:href="#icon-tangmumao-"></use>
                 </svg>
                 <div class="languageArea">
-                     <svg class="icon" aria-hidden="true" v-if="language==1"  @mouseenter="goLanguageArea(1)">
-                        <use xlink:href="#icon-CN"></use>
+                     <svg class="icon" aria-hidden="true" v-if="languageG==1"  @mouseenter="goLanguageArea(1)">
+                        <use xlink:href="#icon-CN1"></use>
                     </svg>
-                    <svg class="icon" aria-hidden="true" v-if="language==2"  @mouseenter="goLanguageArea(1)">
-                        <use xlink:href="#icon-en"></use>
+                    <svg class="icon" aria-hidden="true" v-if="languageG==2"  @mouseenter="goLanguageArea(1)">
+                        <use xlink:href="#icon-en1"></use>
                     </svg>
-                    <svg class="icon" aria-hidden="true" v-if="language==3"  @mouseenter="goLanguageArea(1)">
-                        <use xlink:href="#icon-fantizhongwenicon"></use>
+                    <svg class="icon" aria-hidden="true" v-if="languageG==3"  @mouseenter="goLanguageArea(1)">
+                        <use xlink:href="#icon-TC"></use>
                     </svg>
                     <div class="languegeBox" v-if="languageArea">
                         <svg class="icon" aria-hidden="true" key="1" @click="changeLanguage(1)">
-                            <use xlink:href="#icon-CN"></use>
+                            <use xlink:href="#icon-CN1"></use>
                         </svg>
                         <svg class="icon" aria-hidden="true" key="2" @click="changeLanguage(2)">
-                            <use xlink:href="#icon-en"></use>
+                            <use xlink:href="#icon-en1"></use>
                         </svg>
                         <svg class="icon" aria-hidden="true" key="3" @click="changeLanguage(3)">
-                            <use xlink:href="#icon-fantizhongwenicon"></use>
+                            <use xlink:href="#icon-TC"></use>
                         </svg>
                     </div>
                 </div>
@@ -102,16 +102,13 @@ export default {
   name: 'NavigationBar',
   data(){
       return {
-          language:1,//1 cn 2 en 3 tc
+          languageG:this.language,//1 cn 2 en 3 tc
           languageArea:false,
       }
   },
-  props: {
-    msg: String
-  },
+  props: ['language'],
   methods:{
       goLanguageArea:function(id){
-          console.log(id)
           if(id==1){
               this.languageArea=true;
           }
@@ -122,14 +119,16 @@ export default {
           },5000)
       },
       changeLanguage:function(id){
-          console.log(id)
           this.languageArea=false;
           if(id==1){
-              this.language=1;
+              this.languageG=1;
+              this.$emit('getChirldrenMethod',1) 
           }else if(id==2){
-              this.language=2;
+              this.languageG=2;
+              this.$emit('getChirldrenMethod',2) 
           }else if(id==3){
-              this.language=3;
+              this.languageG=3;
+              this.$emit('getChirldrenMethod',3) 
           }
       }
   }
@@ -150,6 +149,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #0d3c55;
     .wel-text{
         display: flex;
         align-items: center;
@@ -180,7 +180,7 @@ export default {
             .languegeBox{
                 // background: red;
                 .icon{
-                    background: yellow;
+                    background: rgb(5, 245, 65);
                 }
             }
         }

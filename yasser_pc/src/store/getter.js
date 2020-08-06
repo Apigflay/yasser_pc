@@ -1,8 +1,19 @@
 const getters ={
-	Allalltoast(state){
+	AllallLanguage(state){
 		// console.log(state)
-		return state.alltoast
+		return state.allLanguage
 	},
+	AllallToast(state){
+		// console.log(state)
+		return state.allToast
+	},
+	AllallMsg(state){
+		// console.log(state)
+		return state.allMsg
+	},
+
+
+
 	AllallLoginInfo(state){
 		// console.log(state)
 		return state.allLoginInfo

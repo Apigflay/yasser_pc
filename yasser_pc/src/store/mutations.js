@@ -1,12 +1,20 @@
 
   const mutations ={
-	set_alltoast:(state, tf) => {
+	set_allLanguage:(state, data) => {
+		state.allLanguage = data
+	},
+	set_allToast:(state, tf) => {
 		if(tf){
-			state.alltoast = tf;
+			state.allToast = tf;
         }else{
-			state.alltoast = !state.alltoast
+			state.allToast = !state.allToast
 		}
 	},
+	set_allMsg:(state, data) => {
+		state.allMsg = data
+	},
+
+	
 	set_allLoginInfo:(state, data) => {
 		state.allLoginInfo = data
 	},
