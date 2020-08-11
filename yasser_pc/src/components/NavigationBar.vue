@@ -176,11 +176,13 @@ export default {
                 width: 20px!important;
                 height: 20px!important;
                 background-color:yellow;
+                cursor: pointer;
             }
             .languegeBox{
                 // background: red;
                 .icon{
                     background: rgb(5, 245, 65);
+                    cursor: pointer;
                 }
             }
         }

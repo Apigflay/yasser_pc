@@ -29,7 +29,7 @@ export default {
       },
       des:function(){
           console.log('销毁toast')
-      this.$store.commit['set_allMsg','']
+        this.$store.commit['set_allMsg','']
       }
   },
   methods:{
@@ -39,7 +39,8 @@ export default {
      
   },
   destroyed(){
-      this.des()
+      console.log('destroyed')
+    //   this.des()
   }
 }
 </script>
