@@ -1,6 +1,8 @@
 <template>
   <div class="homePage">
+        <!-- nav -->
         <NavigationBar :language="language" @getChirldrenMethod="getChirldrenMethod"></NavigationBar>
+        <!-- menu -->
         <div class="menuWrap">
             <div class="menuArea">
                 <div class="menuTip">
@@ -8,16 +10,19 @@
                   <p>一个不幽默的人.</p>
                 </div>
                 <div class="menuList">
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
-                  <div>首页 HOME</div>
+                  <div class="menuPer" @click="goPages(1)">首页HOME</div>
+                  <div class="menuPer" @click="goPages(2)">博客BLOG</div>
+                  <div class="menuPer" @click="goPages(3)">视频VIDEO</div>
+                  <div class="menuPer" @click="goPages(4)">音乐MUSIC</div>
+                  <div class="menuPer" @click="goPages(5)">游戏GAMES</div>
+                  <div class="menuPer" @click="goPages(6)">终端ADMIN</div>
+                  <div class="menuPer" @click="goPages(7)">敬请期待...</div>
+                  <div class="menuPer" @click="goPages(8)">作者ABOUT ME</div>
                 </div>
             </div>
         </div>
+        <!-- moon -->
+        <Moon></Moon>
     
     
     {{language}}
@@ -37,11 +42,13 @@
 import NavigationBar from '@/components/NavigationBar.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import KeepOnRecord from '@/components/KeepOnRecord.vue'
+import Moon from '@/components/Moon.vue'
 export default {
   name: 'Home',
   components: {
     KeepOnRecord,
-    NavigationBar
+    NavigationBar,
+    Moon
   },
   created() {
   },
@@ -59,14 +66,13 @@ export default {
     },
     texttoast:function(id){
       if(id==1){
-        console.log(this)
         this.$Toast(true,'哈哈哈')
       }else if(id==2){
-        console.log(this)
         this.$Toast(false)
       }
-      
-      
+    },
+    goPages:function(pageId){
+      console.log(pageId)
     }
   },
   beforeMount(){
@@ -117,6 +123,13 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      .menuPer{
+        margin-left: 30px;
+        cursor: pointer;
+      }
+      .menuPer:hover{
+        color: #f16c20;
+      }
     }
   }
 }
