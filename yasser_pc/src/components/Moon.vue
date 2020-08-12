@@ -66,6 +66,7 @@ export default {
     height: 100%;
     position: relative;
     background-image: url('../assets/imgs/Space.jpg');
+    overflow: hidden;
 }
 #sun {//太阳光晕
     background: rgb(248, 72, 2);
