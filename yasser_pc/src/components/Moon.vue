@@ -39,6 +39,11 @@
         <div id="neptune-orbit">
             <img id="neptune" src="../assets/imgs/neptune.png">
         </div>
+        <!-- time -->
+        <div class="timeArea">
+            距离新的一年还有{{days}}天{{hours}}小时{{minuts}}分{{seconds}}秒 <br>
+            加油💪，不留遗憾
+        </div>
   </div>
 </template>
 
@@ -47,12 +52,41 @@ export default {
   name: 'Moon',
   data(){
       return {
-
+          days:'',
+          hours:'',
+          minuts:'',
+          seconds:''
       }
   },
   computed:{
+      
+  },
+  created(){
+      this.InitTimeReducer()
   },
   methods:{   
+      getInitTime:function(){
+        var start=new Date
+        var begin=start.getTime()
+        var ends=new Date("2021/2/12 00:00:00");
+        var end=ends.getTime();
+        var back=end-begin
+        var tian=parseInt(back/1000/60/60/24)
+        var shi=parseInt(back/1000/60/60%24)
+        var fen=parseInt(back/1000/60%60)
+        var miao=parseInt(back/1000%60)
+        this.days = tian;
+        this.hours = shi;
+        this.minuts = fen;
+        this.seconds = miao;
+    },
+    InitTimeReducer:function(){
+        var that =this;
+        clearInterval(timer)
+        var timer = setInterval(function(){
+            that.getInitTime()
+        },1000)
+    }
   },
   destroyed(){
   }
@@ -67,6 +101,12 @@ export default {
     position: relative;
     background-image: url('../assets/imgs/Space.jpg');
     overflow: hidden;
+}
+.timeArea{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #fff;
 }
 #sun {//太阳光晕
     background: rgb(248, 72, 2);

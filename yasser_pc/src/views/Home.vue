@@ -7,7 +7,7 @@
             <div class="menuArea">
                 <div class="menuTip">
                   <p>章鱼🐙</p>
-                  <p>一个不幽默的人.</p>
+                  <p>一个人.</p>
                 </div>
                 <div class="menuList">
                   <div class="menuPer" @click="goPages(1)">首页HOME</div>
@@ -26,8 +26,29 @@
         <!-- introduction -->
         <div class="introductionWrap">
             <div class="introductionArea">
-                <div><span>My Blog</span></div>
-                <p>我的博客，承载了我的学习之路。</p>
+                <h2 class="intro_h2">My Blog</h2>
+                <div class="intro_underline"></div>
+                <p class="p">我的博客，承载了我的学习之路。</p>
+                <ul class="ul">
+                  <li class="li">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-xinxiduanxinxiaoxitixingyoujiansixinyouxiang"></use>
+                    </svg>
+                    <span>283251605@qq.com</span>
+                  </li>
+                  <li class="li">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-weizhi1"></use>
+                    </svg>
+                    <span>Xihu District, Hangzhou, China</span>
+                  </li>
+                  <li class="li">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-AlphaXtubiao-"></use>
+                    </svg>
+                    <span>283251605</span>
+                  </li>
+                </ul>
             </div>
         </div>
     
@@ -56,6 +77,12 @@ export default {
     NavigationBar,
     Moon
   },
+  data(){
+      const num =Math.floor(Math.random()*3)+1;
+      return {
+        mathNum:num,
+      }
+  },
   created() {
   },
   computed:{
@@ -78,7 +105,8 @@ export default {
       }
     },
     goPages:function(pageId){
-      console.log(pageId)
+      console.log(this.mathNum)
+      // console.log(pageId)
     }
   },
   beforeMount(){
@@ -146,6 +174,46 @@ export default {
      width: 1200px;
      margin: auto;
      padding: 90px 0px 60px 0px;
+     .intro_h2{
+       font-size: 40px;
+       line-height: 50px;
+       margin-bottom: 20px;
+     }
+     .intro_underline{
+        width: 80px;
+        height: 2px;
+        background: #f16c20;
+        margin: auto;
+     }
+     .p{
+       margin-top: 20px;
+       font-size: 16px;
+     }
+     .ul{
+       width: 100%;
+       height: 219px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       .li{
+         display: flex;
+         font-weight: 600;
+         flex-direction: column;
+         align-items: center;
+         justify-content: space-around;
+         width: 230px;
+         span{
+           margin-top: 30px;
+         }
+       }
+       .li:nth-child(2){
+         margin:0 110px;
+       }
+       .li span:hover{
+         color:#f16c20;
+       }
+     }
+
   }
 }
 </style>
