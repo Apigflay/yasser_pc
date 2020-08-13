@@ -23,7 +23,13 @@
         </div>
         <!-- moon -->
         <Moon></Moon>
-    
+        <!-- introduction -->
+        <div class="introductionWrap">
+            <div class="introductionArea">
+                <div><span>My Blog</span></div>
+                <p>我的博客，承载了我的学习之路。</p>
+            </div>
+        </div>
     
     {{language}}
     <Toast></Toast>
@@ -131,6 +137,15 @@ export default {
         color: #f16c20;
       }
     }
+  }
+}
+.introductionWrap{//介绍
+  width: 100%;
+  background: #fff;
+  .introductionArea{
+     width: 1200px;
+     margin: auto;
+     padding: 90px 0px 60px 0px;
   }
 }
 </style>

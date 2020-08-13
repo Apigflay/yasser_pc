@@ -94,8 +94,9 @@ Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)
   height: 35px!important;
 }
 
-# 12 
+# 12 npm run build 报错问题
 
+index.html meta标签无 ""
 
 
 
