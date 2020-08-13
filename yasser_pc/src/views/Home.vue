@@ -1,66 +1,64 @@
 <template>
   <div class="homePage">
-        <!-- nav -->
-        <NavigationBar :language="language" @getChirldrenMethod="getChirldrenMethod"></NavigationBar>
-        <!-- menu -->
-        <div class="menuWrap">
-            <div class="menuArea">
-                <div class="menuTip">
-                  <p>章鱼🐙</p>
-                  <p>一个人.</p>
-                </div>
-                <div class="menuList">
-                  <div class="menuPer" @click="goPages(1)">首页HOME</div>
-                  <div class="menuPer" @click="goPages(2)">博客BLOG</div>
-                  <div class="menuPer" @click="goPages(3)">视频VIDEO</div>
-                  <div class="menuPer" @click="goPages(4)">音乐MUSIC</div>
-                  <div class="menuPer" @click="goPages(5)">游戏GAMES</div>
-                  <div class="menuPer" @click="goPages(6)">终端ADMIN</div>
-                  <div class="menuPer" @click="goPages(7)">敬请期待...</div>
-                  <div class="menuPer" @click="goPages(8)">作者ABOUT ME</div>
-                </div>
-            </div>
-        </div>
-        <!-- moon -->
-        <Moon></Moon>
-        <!-- introduction -->
-        <div class="introductionWrap">
-            <div class="introductionArea">
-                <h2 class="intro_h2">My Blog</h2>
-                <div class="intro_underline"></div>
-                <p class="p">我的博客，承载了我的学习之路。</p>
-                <ul class="ul">
-                  <li class="li">
-                    <svg class="icon" aria-hidden="true">
-                      <use xlink:href="#icon-xinxiduanxinxiaoxitixingyoujiansixinyouxiang"></use>
-                    </svg>
-                    <span>283251605@qq.com</span>
-                  </li>
-                  <li class="li">
-                    <svg class="icon" aria-hidden="true">
-                      <use xlink:href="#icon-weizhi1"></use>
-                    </svg>
-                    <span>Xihu District, Hangzhou, China</span>
-                  </li>
-                  <li class="li">
-                    <svg class="icon" aria-hidden="true">
-                      <use xlink:href="#icon-AlphaXtubiao-"></use>
-                    </svg>
-                    <span>283251605</span>
-                  </li>
-                </ul>
-            </div>
-        </div>
-    
-    {{language}}
-    <Toast></Toast>
-    <span @click="texttoast(1)"> hahhhh</span>
-    <span @click="texttoast(2)"> none</span>
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-haimianbaobao-"></use>
-    </svg>
-  
-    <KeepOnRecord></KeepOnRecord>  
+      <!-- nav -->
+      <NavigationBar :language="language" @getChirldrenMethod="getChirldrenMethod"></NavigationBar>
+      <!-- menu -->
+      <div class="menuWrap">
+          <div class="menuArea">
+              <div class="menuTip">
+                <p>章鱼🐙</p>
+                <p>一个人.</p>
+              </div>
+              <div class="menuList">
+                <div class="menuPer" @click="goPages(1)">首页HOME</div>
+                <div class="menuPer" @click="goPages(2)">博客BLOG</div>
+                <div class="menuPer" @click="goPages(3)">视频VIDEO</div>
+                <div class="menuPer" @click="goPages(4)">音乐MUSIC</div>
+                <div class="menuPer" @click="goPages(5)">游戏GAMES</div>
+                <div class="menuPer" @click="goPages(6)">终端ADMIN</div>
+                <div class="menuPer" @click="goPages(7)">敬请期待...</div>
+                <div class="menuPer" @click="goPages(8)">作者ABOUT ME</div>
+              </div>
+          </div>
+      </div>
+      <!-- moon -->
+      <Moon></Moon>
+      <!-- introduction -->
+      <div class="introductionWrap">
+          <div class="introductionArea">
+              <h2 class="intro_h2">My Blog</h2>
+              <div class="intro_underline"></div>
+              <p class="p">我的博客，承载了我的学习之路。</p>
+              <ul class="ul">
+                <li class="li">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xinxiduanxinxiaoxitixingyoujiansixinyouxiang"></use>
+                  </svg>
+                  <span>283251605@qq.com</span>
+                </li>
+                <li class="li">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-weizhi1"></use>
+                  </svg>
+                  <span>Xihu District, Hangzhou, China</span>
+                </li>
+                <li class="li">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-AlphaXtubiao-"></use>
+                  </svg>
+                  <span>283251605</span>
+                </li>
+              </ul>
+          </div>
+      </div>
+      <!-- 留言板 -->
+      <MessageBoard></MessageBoard> 
+      <DrawingBoard></DrawingBoard>
+      
+      <!-- <span @click="texttoast(1)"> hahhhh</span> -->
+      <!-- <span @click="texttoast(2)"> none</span> -->
+      <KeepOnRecord></KeepOnRecord>  
+      <Toast></Toast>
   </div>
 </template>
 
@@ -70,12 +68,16 @@ import NavigationBar from '@/components/NavigationBar.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import KeepOnRecord from '@/components/KeepOnRecord.vue'
 import Moon from '@/components/Moon.vue'
+import MessageBoard from '@/components/MessageBoard.vue'
+import DrawingBoard from '@/components/DrawingBoard.vue' 
 export default {
   name: 'Home',
   components: {
     KeepOnRecord,
     NavigationBar,
-    Moon
+    Moon,
+    MessageBoard,
+    DrawingBoard
   },
   data(){
       const num =Math.floor(Math.random()*3)+1;
