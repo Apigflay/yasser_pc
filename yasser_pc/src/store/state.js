@@ -3,6 +3,10 @@ const state ={//所有状态以all开头
 	allToast:false,//false 不显示 toast组件
 	allMsg:'',//
 
+
+
+
+	
 	alltoast:false,//quanju 提示框 模拟  uni.showtoast
 	allLoginInfo:null,//登录成功信息
 	allHomeVideoData:null,//首页推荐视频
