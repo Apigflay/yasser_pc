@@ -11,6 +11,17 @@ const getters ={
 		// console.log(state)
 		return state.allMsg
 	},
+	AllallIsLogin(state){
+		// console.log(state)
+		return state.allIsLogin
+	},
+
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,10 @@ Vue.component('Toast',toast)
 import '@/assets/base.css' /*引入公共样式*/
 // import '@/iconfont/iconfont.js';/*引入iconfont图标*/
 
+import axios from 'axios';//引入axios
+// import axios from './assets/js/axios';   //并依据创建文件
+Vue.prototype.$axios = axios; //添加axios到Vue的原型对象上
+
 function toastT(tf,msg,id){//
     store.commit('set_allMsg',msg)
     if(tf){

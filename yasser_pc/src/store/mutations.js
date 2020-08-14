@@ -13,6 +13,20 @@
 	set_allMsg:(state, data) => {
 		state.allMsg = data
 	},
+	set_allIsLogin:(state, data) => {
+		state.allIsLogin = data
+	},
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	set_allLoginInfo:(state, data) => {

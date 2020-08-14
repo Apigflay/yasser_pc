@@ -98,6 +98,11 @@ Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)
 
 index.html meta标签无 ""
 
+# 13 vuex 问题
+  
+  app.vue 优化
+
+# 14 
 
 
 
@@ -113,6 +118,8 @@ index.html meta标签无 ""
 
 
 
-https://www.cnblogs.com/mica/p/10756872.html
-https://whyphoto.lamost.org/
+https://www.jianshu.com/p/aca26ec75ec3  markdown
+https://www.cnblogs.com/mica/p/10756872.html    画板娘
+
+https://whyphoto.lamost.org/    fang
 https://www.zcool.com.cn/work/ZMjE1NzM3MDg=.html

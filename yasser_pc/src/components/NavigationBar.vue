@@ -61,13 +61,16 @@
                 </svg>
             </div>
             <div class="wel-function">
-                <svg class="icon" aria-hidden="true">
+                <svg class="icon login" aria-hidden="true" v-if="!isLogin" @click="goLogin">
+                    <use xlink:href="#icon-icon"></use>
+                </svg>
+                <svg class="icon" aria-hidden="true" v-if="isLogin&&mathNum==1">
                     <use xlink:href="#icon-haimianbaobao-"></use>
                 </svg>
-                <svg class="icon" aria-hidden="true">
+                <svg class="icon" aria-hidden="true"  v-if="isLogin&&mathNum==2">
                     <use xlink:href="#icon-duolaameng-"></use>
                 </svg>
-                <svg class="icon" aria-hidden="true">
+                <svg class="icon" aria-hidden="true"  v-if="isLogin&&mathNum==3">
                     <use xlink:href="#icon-tangmumao-"></use>
                 </svg>
                 <div class="languageArea">
@@ -101,12 +104,19 @@
 export default {
   name: 'NavigationBar',
   data(){
+      const num = Math.floor(Math.random()*3+1)
       return {
           languageG:this.language,//1 cn 2 en 3 tc
           languageArea:false,
+          mathNum:num,//随机数  1~3
       }
   },
   props: ['language'],
+  computed:{
+      isLogin(){
+          return this.$store.getters['AllallIsLogin']
+      }
+  },
   methods:{
       goLanguageArea:function(id){
           if(id==1){
@@ -130,6 +140,9 @@ export default {
               this.languageG=3;
               this.$emit('getChirldrenMethod',3) 
           }
+      },
+      goLogin:function(){
+          this.$router.push({path:'/login'});
       }
   }
 }
@@ -168,6 +181,9 @@ export default {
         height: 46px;
         display: flex;
         align-items: center;
+        .login{
+                cursor: pointer;
+        }
         .languageArea{
             margin-left: 10px;
             height: 20px;
@@ -179,6 +195,8 @@ export default {
                 cursor: pointer;
             }
             .languegeBox{
+                position: absolute;
+                width: 20px;
                 // background: red;
                 .icon{
                     background: rgb(5, 245, 65);
