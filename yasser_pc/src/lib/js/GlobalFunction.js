@@ -1,23 +1,27 @@
 const CryptoJS = require('../crypto-js/crypto-js.js');  //引用AES源码js
 import {webMsg} from '../socket/modules/handle.js'
+import axios from 'axios';//引入axios
 /**
  * get（）--api
  * @param obj 参数 url 地址
  * @returns {*}
  */
 export function Get(obj,url){
+	var that = this;
 	return new Promise((resolve, reject) => {
-		uni.request({
-			url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
-			data: obj,
-			method:'GET',
-			success: (res) => {
-				resolve(res);
-			},
-			fail(err) {
-				reject(err);
+		axios({  
+			url: '/api'+url,
+			method: 'get',
+			//params参数必写 , 如果没有参数传{}也可以
+			data:{ 
 			}
-		});
+        })
+        .then((res)=>{
+            resolve(res);
+        })
+        .catch((err)=>{
+            reject(err);
+        })
 	})
 }
 /**
@@ -110,7 +114,7 @@ export function Delete1 (obj,aid,url) {
  * @returns {*}
  */
 export function encrypt(word){
-	var key = CryptoJS.enc.Utf8.parse("hangzhoutiangekeji9158miaobolive");
+	var key = CryptoJS.enc.Utf8.parse("xiaohuixiaohuihahaha");
 	var srcs = CryptoJS.enc.Utf8.parse(word);
 	var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
 	return encrypted.toString();
@@ -121,7 +125,7 @@ export function encrypt(word){
  * @returns {*}
  */
 export function decrypt(word){
-	var key = CryptoJS.enc.Utf8.parse("hangzhoutiangekeji9158miaobolive");
+	var key = CryptoJS.enc.Utf8.parse("xiaohuixiaohuihahaha");
 	var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
 	return CryptoJS.enc.Utf8.stringify(decrypt).toString();
 }

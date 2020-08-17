@@ -15,7 +15,17 @@ module.exports = {
     devServer: {
 		compress: true,
 		disableHostCheck: true, //webpack4.0 开启热更新
-		open:true,
+    open:true,
+    proxy: {
+      '/api': {
+        target: 'http://192.168.12.198:3000/api',
+        ws: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    }
 	}
 
 }
