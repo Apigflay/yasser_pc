@@ -10,7 +10,7 @@
 
 <script>
 // @ is an alias to /src
-import {getLoginResult} from "../lib/http/login.js"
+import {getLoginResult,getLoginResultPost} from "../lib/http/login.js"
 import {encrypt,decrypt} from "../lib/js/GlobalFunction.js"
 export default {
   name: 'Login',
@@ -35,12 +35,29 @@ export default {
   },
   methods:{
     goLogin:function(){
-        // console.log(this.accountNumber)
-        // console.log(this.password)
+        console.log(this.accountNumber)
+        console.log(this.password)
+
         // console.log(window.location)
-        var str = encodeURIComponent(encrypt(JSON.stringify({id:1})));
-        console.log(str)
-        getLoginResult({},'?params='+str).then(//
+        // var str = encodeURIComponent(encrypt(JSON.stringify({id:1})));
+        // console.log(str)
+        // getLoginResult({},'?params='+str).then(//
+        //     (res) => {
+        //         console.log(res.data)
+        //         if(res.data.code==200){
+
+        //         }else{
+                    
+        //         }
+        //     },
+        //     (err) => {
+        //     console.log('get err', err)
+        //     }
+        // )
+        var str = {params:encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})))};
+        // var str =JSON.stringify({accountNumber:this.accountNumber,password:this.password});
+        // var str = encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})));
+        getLoginResultPost(str,'/po').then(//
             (res) => {
                 console.log(res.data)
                 if(res.data.code==200){
@@ -53,6 +70,9 @@ export default {
             console.log('get err', err)
             }
         )
+        
+
+
 
 
         // this.$axios({  

@@ -4,7 +4,7 @@ import {Get,Post} from "../js/GlobalFunction.js"
 export const getLoginResult = (p,q) => Get(p,q)//'UserInfo/getPlayBackLiveUrl'
 
 //登录post
-
+export const getLoginResultPost = (p,q) => Post(p,q)//'UserInfo/getPlayBackLiveUrl'
 
 
 // 通过密码获取流地址

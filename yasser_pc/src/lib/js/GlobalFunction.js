@@ -31,18 +31,18 @@ export function Get(obj,url){
  */
 export function Post (obj,url) {
 	return new Promise((resolve, reject) => {
-		uni.request({
+		axios({
 			// url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
-			url: 'http://60.191.222.11:8022/'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
+			url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
 			data: obj,
-			method:'POST',
-			success: (res) => {
-				resolve(res);
-			},
-			fail(err) {
-				reject(err)
-			}
-		});
+			method:'POST'
+		})
+		.then((res)=>{
+			resolve(res);
+		})
+		.catch((err)=>{
+			reject(err);
+		})
 	})
 }
 /**
