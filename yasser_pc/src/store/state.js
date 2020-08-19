@@ -3,13 +3,15 @@ const state ={//所有状态以all开头
 	allToast:false,//false 不显示 toast组件
 	allMsg:'',//提示消息
 	allIsLogin:false,//默认未登录
+	allLoginInfo:null,//登录成功信息
 
+	
 
 
 
 
 	alltoast:false,//quanju 提示框 模拟  uni.showtoast
-	allLoginInfo:null,//登录成功信息
+	
 	allHomeVideoData:null,//首页推荐视频
 	allisRelogin:false,//是否断线重连 默认false
 	allTryLoginData:{msg:null,num:null},//断线重连前的操作  保存其 数据及其协议 断线重连之后 重复调用该方法

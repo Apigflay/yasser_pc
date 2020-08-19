@@ -7,10 +7,12 @@ import axios from 'axios';//引入axios
  * @returns {*}
  */
 export function Get(obj,url){
-	var that = this;
+	// console.log(obj)//
+	// console.log(url)
+	var str = url+'?params='+encodeURIComponent(encrypt(JSON.stringify(obj)))
 	return new Promise((resolve, reject) => {
 		axios({  
-			url: '/api'+url,
+			url: '/api'+str,
 			method: 'get',
 			//params参数必写 , 如果没有参数传{}也可以
 			data:{ 
@@ -30,11 +32,12 @@ export function Get(obj,url){
  * @returns {*}
  */
 export function Post (obj,url) {
+	var str = {params:encodeURIComponent(encrypt(JSON.stringify(obj)))};
 	return new Promise((resolve, reject) => {
 		axios({
 			// url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
 			url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
-			data: obj,
+			data: str,
 			method:'POST'
 		})
 		.then((res)=>{

@@ -10,7 +10,7 @@
 
 <script>
 // @ is an alias to /src
-import {getLoginResult,getLoginResultPost} from "../lib/http/login.js"
+import {getLoginResultGet,getLoginResultPost} from "../lib/http/login.js"
 import {encrypt,decrypt} from "../lib/js/GlobalFunction.js"
 export default {
   name: 'Login',
@@ -37,33 +37,40 @@ export default {
     goLogin:function(){
         console.log(this.accountNumber)
         console.log(this.password)
-
-        // console.log(window.location)
-        // var str = encodeURIComponent(encrypt(JSON.stringify({id:1})));
-        // console.log(str)
-        // getLoginResult({},'?params='+str).then(//
+        // var str = {accountNumber:this.accountNumber,password:this.password};
+        // getLoginResultGet(str,'/login').then(//
         //     (res) => {
         //         console.log(res.data)
-        //         if(res.data.code==200){
-
+        //         if(res.data.code==100){
+        //             this.$Toast(true,res.data.msg)
+        //             this.$store.commit('set_allIsLogin',true);
+        //             this.$store.commit('set_allLoginInfo',res.data.data[0]);
+        //             this.$router.push({path:'/'});
         //         }else{
-                    
+        //             this.$Toast(true,res.data.msg)
         //         }
         //     },
         //     (err) => {
         //     console.log('get err', err)
         //     }
         // )
-        var str = {params:encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})))};
+
+        
+        // var str = {params:encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})))};
         // var str =JSON.stringify({accountNumber:this.accountNumber,password:this.password});
         // var str = encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})));
+        
+        var str = {accountNumber:this.accountNumber,password:this.password};
         getLoginResultPost(str,'/po').then(//
             (res) => {
                 console.log(res.data)
-                if(res.data.code==200){
-
+                if(res.data.code==100){
+                    this.$Toast(true,res.data.msg)
+                    this.$store.commit('set_allIsLogin',true);
+                    this.$store.commit('set_allLoginInfo',res.data.data[0]);
+                    this.$router.push({path:'/'});
                 }else{
-                    
+                    this.$Toast(true,res.data.msg)
                 }
             },
             (err) => {

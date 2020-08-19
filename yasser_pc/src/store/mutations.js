@@ -16,7 +16,9 @@
 	set_allIsLogin:(state, data) => {
 		state.allIsLogin = data
 	},
-
+	set_allLoginInfo:(state, data) => {
+		state.allLoginInfo = data
+	},
 
 
 
@@ -29,9 +31,7 @@
 
 
 	
-	set_allLoginInfo:(state, data) => {
-		state.allLoginInfo = data
-	},
+	
 	set_allHomeVideoData:(state, data) => {
 		state.allHomeVideoData = data
 	},

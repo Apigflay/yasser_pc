@@ -15,20 +15,20 @@ const getters ={
 		// console.log(state)
 		return state.allIsLogin
 	},
-
-
-
-
-
-
-
-
-
-
 	AllallLoginInfo(state){
 		// console.log(state)
 		return state.allLoginInfo
 	},
+
+
+
+
+
+
+
+
+
+	
 	AllallHomeVideoData(state){
 		// console.log(state)
 		return state.allHomeVideoData

@@ -96,7 +96,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .moonArea{//太空背景
-    width: 100%;
+    // width: 100%;
+    min-width: 1200px;
     height: 100%;
     position: relative;
     background-image: url('../assets/imgs/Space.jpg');
