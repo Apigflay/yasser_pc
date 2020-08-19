@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import EditBlog from '../views/EditBlog.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -17,6 +18,15 @@ Vue.use(VueRouter)
     meta:{
       name:'登录',
       index:[{name:'登录',path:'/login'}]
+    }
+  },
+  {
+    path: '/editblog',
+    name: 'EditBlog',
+    component: EditBlog,
+    meta:{
+      name:'博客',
+      index:[{name:'博客',path:'/editblog'}]
     }
   },
   {

@@ -107,8 +107,15 @@ export default {
       }
     },
     goPages:function(pageId){
-      console.log(this.mathNum)
-      // console.log(pageId)
+      console.log(pageId)
+      switch(pageId){
+        case 1:
+          this.$router.push({path:'/'});
+          break;
+        case 2:
+          this.$router.push({path:'/editblog'});
+          break;
+      }
     }
   },
   beforeMount(){

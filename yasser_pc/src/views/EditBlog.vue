@@ -1,7 +1,6 @@
 <template>
   <div class="loginPages">
-        <input type="text" v-model.trim="accountNumber"><br>
-        <input type="text" v-model.trim="password"><br>
+        <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
         <button @click="goLogin">login</button>
 
         <Toast></Toast>
@@ -34,6 +33,10 @@ export default {
 
   },
   methods:{
+    seletFile:function(ev){
+        console.log(ev.target.files)
+        console.log()
+    },
     goLogin:function(){
         console.log(this.accountNumber)
         console.log(this.password)
