@@ -61,7 +61,7 @@ export default {
         // var str = encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})));
         
         var str = {accountNumber:this.accountNumber,password:this.password};
-        getLoginResultPost(str,'/po').then(//
+        getLoginResultPost(str,'/login/po').then(//
             (res) => {
                 console.log(res.data)
                 if(res.data.code==100){
