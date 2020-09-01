@@ -102,7 +102,29 @@ index.html meta标签无 ""
   
   app.vue 优化
 
-# 14 
+# 14 退出登录 优化  异步处理
+
+# 15 按需引入 element ui
+
+1>安装  npm i element-ui -S   
+2>安装  npm install babel-plugin-component -D
+3>在balelconfig.js 增加
+"plugins": [
+  [
+    "component",
+    {
+      "libraryName": "element-ui",
+      "styleLibraryName": "theme-chalk"
+    }
+  ]
+]
+4 引入并使用
+import { Button,Message} from 'element-ui';
+Vue.use(Button)
+Vue.prototype.$message = Message;
+
+<el-button :plain="true" @click="open">打开消息提示</el-button>
+this.$message('这是一条消息提示');
 
 
 

@@ -3,7 +3,7 @@
         <input type="text" v-model.trim="accountNumber"><br>
         <input type="text" v-model.trim="password"><br>
         <button @click="goLogin">login</button>
-
+        <el-button type="primary" disabled>主要按钮</el-button>
         <Toast></Toast>
   </div>
 </template>
@@ -61,6 +61,7 @@ export default {
         // var str = encodeURIComponent(encrypt(JSON.stringify({accountNumber:this.accountNumber,password:this.password})));
         
         var str = {accountNumber:this.accountNumber,password:this.password};
+        var that =this;
         getLoginResultPost(str,'/login/po').then(//
             (res) => {
                 console.log(res.data)
@@ -70,6 +71,8 @@ export default {
                     this.$store.commit('set_allLoginInfo',res.data.data[0]);
                     this.$router.push({path:'/'});
                 }else{
+                  console.log(this)
+                    // this.$message(res.data.msg);
                     this.$Toast(true,res.data.msg)
                 }
             },

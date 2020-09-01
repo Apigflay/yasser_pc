@@ -27,6 +27,10 @@ function toastT(tf,msg,id){//
 }
 Vue.prototype.$Toast = toastT;
 
+import { Button,Message} from 'element-ui';
+Vue.use(Button)//
+// Vue.use(Message)
+Vue.prototype.$message = Message;
 Vue.config.productionTip = false
 
 new Vue({

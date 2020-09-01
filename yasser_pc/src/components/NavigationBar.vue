@@ -61,7 +61,10 @@
                 </svg>
             </div>
             <div class="wel-function">
-                <svg class="icon login" aria-hidden="true" v-if="!isLogin" @click="goLogin">
+                <svg class="icon signOut" aria-hidden="true" v-if="isLogin" @click="goLogin(0)">
+                    <use xlink:href="#icon-tuichu1"></use>
+                </svg>
+                <svg class="icon login" aria-hidden="true" v-if="!isLogin" @click="goLogin(1)">
                     <use xlink:href="#icon-icon"></use>
                 </svg>
                 <svg class="icon" aria-hidden="true" v-if="isLogin&&mathNum==1">
@@ -141,8 +144,16 @@ export default {
               this.$emit('getChirldrenMethod',3) 
           }
       },
-      goLogin:function(){
-          this.$router.push({path:'/login'});
+      goLogin:function(id){
+          console.log(this.$store.getters['AllallIsLogin'])
+          if(id==0){
+              console.log('退出登录')
+              this.$message('退出登录');
+            //   this.$store.dispatch('SET_allIsLogin',false)
+          }else if(id==1){
+            this.$router.push({path:'/login'});
+          }
+
       }
   }
 }
@@ -209,6 +220,12 @@ export default {
         }
         .icon:hover{ 
             background-color:yellow;
+        }
+        .signOut{
+            height: 20px!important;
+            width: 20px!important;
+            border-radius: 20px;
+            cursor: pointer;
         }
     }
 }

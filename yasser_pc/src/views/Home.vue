@@ -59,6 +59,7 @@
       <!-- <span @click="texttoast(2)"> none</span> -->
       <KeepOnRecord></KeepOnRecord>  
       <Toast></Toast>
+      <el-button :plain="true" @click="open">打开消息提示</el-button>
   </div>
 </template>
 
@@ -96,6 +97,9 @@ export default {
 
   },
   methods:{
+     open() {
+        this.$message('这是一条消息提示');
+      },
     getChirldrenMethod:function(msg){
       this.$store.commit['set_allLanguage',msg]
     },
