@@ -3,9 +3,16 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import EditBlog from '../views/EditBlog.vue'
+import No404 from '../views/No404.vue'
+import TestDemo from '../views/TestDemo.vue'
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
+  {
+    path: '*',
+    name: 'No404',
+    component: No404
+  },
   {
     path: '/',
     name: 'Home',
@@ -27,6 +34,15 @@ Vue.use(VueRouter)
     meta:{
       name:'博客',
       index:[{name:'博客',path:'/editblog'}]
+    }
+  },
+  {
+    path: '/testdemo',
+    name: 'TestDemo',
+    component: TestDemo,
+    meta:{
+      name:'测试',
+      index:[{name:'测试',path:'/testdemo'}]
     }
   },
   {

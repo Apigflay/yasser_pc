@@ -126,6 +126,73 @@ Vue.prototype.$message = Message;
 <el-button :plain="true" @click="open">打开消息提示</el-button>
 this.$message('这是一条消息提示');
 
+# 16 使用swiper 两种方式 
+
+1 通过引入swiper.js 以及css 
+再页面或者组件使用swiper的地方引入
+js css  下个包packge下有
+// var Swiper = require('@/lib/tools/swiper/swiper-bundle.min.js')  ---都行
+import Swiper from '@/lib/tools/swiper/swiper-bundle.min.js'  ---都行
+import '@/lib/tools/swiper/swiper-bundle.min.css' /*引入swiper公共样式*/
+
+初始化方法
+initSwiper:function(){
+  var swiper = new Swiper('.swiper-container',{
+    direction: 'horizontal', // 垂直切换选项 horizontal vertical
+      speed:300,//速度
+      autoplay : {
+          delay:3000
+      },
+      grabCursor:true,//默认：false举例：true
+      setWrapperSize:true,//disflex 布局
+      freeMode : true,//抵抗反弹
+      loop: true, // 循环模式选项
+      // 如果需要分页器
+      pagination: {
+          el: '.swiper-pagination',
+      },
+      // 如果需要前进后退按钮
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      // 如果需要滚动条
+      scrollbar: {
+          el: '.swiper-scrollbar',
+      },
+  });
+}
+
+引用
+mounted(){
+  this.initSwiper()
+},
+
+2 全局注册 
+npm install swiper vue-awesome-swiper --save  安装
+
+main.js
+
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+
+// If you use Swiper 6.0.0 or higher
+import 'swiper/swiper-bundle.css' // import style
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+
+<div class="swiper2Wrap">
+    <swiper ref="mySwiper">
+        <swiper-slide>Slide 1</swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>Slide 4</swiper-slide>
+        <swiper-slide>Slide 5</swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+</div>
+
+swiperOption 无效 采用init方法初始化
+
+
 
 
 

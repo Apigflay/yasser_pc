@@ -6,6 +6,16 @@ import store from './store'
 import toast from './components/Toast.vue'
 Vue.component('Toast',toast)
 import '@/assets/base.css' /*引入公共样式*/
+
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+
+// If you use Swiper 6.0.0 or higher
+import 'swiper/swiper-bundle.css' // import style
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+
+import Global_ from './lib/js/GlobalObj.js'   //全局对象
+Vue.prototype.GLOBAL = Global_; //添加Global_到Vue的原型对象上
+
 // import '@/iconfont/iconfont.js';/*引入iconfont图标*/
 
 import axios from 'axios';//引入axios

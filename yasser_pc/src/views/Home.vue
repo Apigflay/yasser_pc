@@ -51,6 +51,8 @@
               </ul>
           </div>
       </div>
+      <!-- banner -->
+      <Banner></Banner>
       <!-- 留言板 -->
       <MessageBoard></MessageBoard> 
       <DrawingBoard></DrawingBoard>
@@ -59,18 +61,22 @@
       <!-- <span @click="texttoast(2)"> none</span> -->
       <KeepOnRecord></KeepOnRecord>  
       <Toast></Toast>
-      <el-button :plain="true" @click="open">打开消息提示</el-button>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+// var Swiper = require('@/lib/tools/swiper/swiper-bundle.min.js')
+import Swiper from '@/lib/tools/swiper/swiper-bundle.min.js'
+import '@/lib/tools/swiper/swiper-bundle.min.css' /*引入swiper公共样式*/
 import NavigationBar from '@/components/NavigationBar.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import KeepOnRecord from '@/components/KeepOnRecord.vue'
 import Moon from '@/components/Moon.vue'
 import MessageBoard from '@/components/MessageBoard.vue'
 import DrawingBoard from '@/components/DrawingBoard.vue' 
+import Banner from '@/components/Banner.vue' 
 export default {
   name: 'Home',
   components: {
@@ -78,7 +84,8 @@ export default {
     NavigationBar,
     Moon,
     MessageBoard,
-    DrawingBoard
+    DrawingBoard,
+    Banner
   },
   data(){
       const num =Math.floor(Math.random()*3)+1;
@@ -120,11 +127,13 @@ export default {
           this.$router.push({path:'/editblog'});
           break;
       }
-    }
+    },
+
   },
   beforeMount(){
   },
   mounted(){
+
   },
 }
 </script>
@@ -228,6 +237,10 @@ export default {
      }
 
   }
+}
+.swiperWarp{
+  height: 500px;
+  width: 100%;
 }
 </style>
 

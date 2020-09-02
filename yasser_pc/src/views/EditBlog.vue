@@ -30,7 +30,16 @@ export default {
     }
   },
   watch:{
-
+        language(curval,oldval){   //监听了computed中getorderid的值，如果发生改变就触发console.log
+            console.log(curval,oldval)
+        }
+        // language: {
+        // 	deep: true,
+        // 	handler: function (newVal,oldVal){
+        // 	  console.log('newValue', newVal);
+        // 	  console.log('oldValue', oldVal);
+        // 	}
+        // }
   },
   methods:{
     seletFile:function(ev){
@@ -38,8 +47,6 @@ export default {
         console.log()
     },
     goLogin:function(){
-        console.log(this.accountNumber)
-        console.log(this.password)
         // var str = {accountNumber:this.accountNumber,password:this.password};
         // getLoginResultGet(str,'/login').then(//
         //     (res) => {
