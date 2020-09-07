@@ -3,23 +3,23 @@
         <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
         <button @click="goLogin">login</button>
 
-        <Toast></Toast>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import {getLoginResultGet,getLoginResultPost} from "../lib/http/login.js"
+import {addPicture} from "../lib/http/upload.js"
 import {encrypt,decrypt} from "../lib/js/GlobalFunction.js"
 export default {
-  name: 'Login',
+  name: 'EditBlog',
   components: {
       
   },
   data(){
       return {
         accountNumber:'',
-        password:''
+        password:'',
+        file:null,
       }
   },
   created() {
@@ -44,7 +44,8 @@ export default {
   methods:{
     seletFile:function(ev){
         console.log(ev.target.files)
-        console.log()
+        console.log(ev.target.files[0])
+        this.file = ev.target.files[0];
     },
     goLogin:function(){
         // var str = {accountNumber:this.accountNumber,password:this.password};
@@ -65,15 +66,20 @@ export default {
         //     }
         // )
         
-        var str = {accountNumber:this.accountNumber,password:this.password};
-        getLoginResultPost(str,'/po').then(//
+        // var str = {accountNumber:this.accountNumber,password:this.password};
+        var str = this.file;
+        console.log(str)
+        // var url = URL.createObjectURL(file); 
+        var formData = new FormData();
+        formData.append('file',this.file);
+        addPicture(formData,'/upload/addPic').then(//
             (res) => {
                 console.log(res.data)
                 if(res.data.code==100){
-                    this.$Toast(true,res.data.msg)
-                    this.$store.commit('set_allIsLogin',true);
-                    this.$store.commit('set_allLoginInfo',res.data.data[0]);
-                    this.$router.push({path:'/'});
+                    // this.$Toast(true,res.data.msg)
+                    // this.$store.commit('set_allIsLogin',true);
+                    // this.$store.commit('set_allLoginInfo',res.data.data[0]);
+                    // this.$router.push({path:'/'});
                 }else{
                     this.$Toast(true,res.data.msg)
                 }

@@ -49,6 +49,35 @@ export function Post (obj,url) {
 	})
 }
 /**
+ * post（）--api
+ * @param obj 
+ * @returns {*}
+ */
+export function Upload (obj,url) {
+	console.log(obj)
+	console.log(obj.file)
+	console.log(url)
+	// var str = {params:encodeURIComponent(encrypt(JSON.stringify(obj)))};
+	return new Promise((resolve, reject) => {
+		axios({
+			// url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
+			url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
+			data: obj,
+			method:'POST'
+		})
+		.then((res)=>{
+			resolve(res);
+		})
+		.catch((err)=>{
+			reject(err);
+		})
+	})
+}
+
+
+
+
+/**
  * get（）--api
  * @param obj 参数 url 地址
  * @returns {*}

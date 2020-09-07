@@ -192,6 +192,9 @@ Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
 swiperOption 无效 采用init方法初始化
 
+# 17 图片上传返网络路径 
+
+
 
 
 
