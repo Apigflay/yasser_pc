@@ -55,7 +55,6 @@ export function Post (obj,url) {
  */
 export function Upload (obj,url) {
 	console.log(obj)
-	console.log(obj.file)
 	console.log(url)
 	// var str = {params:encodeURIComponent(encrypt(JSON.stringify(obj)))};
 	return new Promise((resolve, reject) => {

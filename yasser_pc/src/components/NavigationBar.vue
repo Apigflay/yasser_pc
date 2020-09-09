@@ -149,7 +149,7 @@ export default {
           if(id==0){
               console.log('退出登录')
               this.$message('退出登录');
-            //   this.$store.dispatch('SET_allIsLogin',false)
+              this.$store.dispatch('SET_allIsLogin',false)
           }else if(id==1){
             this.$router.push({path:'/login'});
           }
