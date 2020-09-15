@@ -51,14 +51,14 @@
               </ul>
           </div>
       </div>
+      <!-- 目标进度条 -->
+      <TargetProgress></TargetProgress>
       <!-- banner -->
       <Banner></Banner>
       <!-- 留言板 -->
       <MessageBoard></MessageBoard> 
+      <!-- 画板 -->
       <DrawingBoard></DrawingBoard>
-      
-      <!-- <span @click="texttoast(1)"> hahhhh</span> -->
-      <!-- <span @click="texttoast(2)"> none</span> -->
       <KeepOnRecord></KeepOnRecord>  
       <Toast></Toast>
 
@@ -77,6 +77,7 @@ import Moon from '@/components/Moon.vue'
 import MessageBoard from '@/components/MessageBoard.vue'
 import DrawingBoard from '@/components/DrawingBoard.vue' 
 import Banner from '@/components/Banner.vue' 
+import TargetProgress from '@/components/TargetProgress.vue' 
 export default {
   name: 'Home',
   components: {
@@ -85,7 +86,8 @@ export default {
     Moon,
     MessageBoard,
     DrawingBoard,
-    Banner
+    Banner,
+    TargetProgress
   },
   data(){
       const num =Math.floor(Math.random()*3)+1;
@@ -124,7 +126,7 @@ export default {
           this.$router.push({path:'/'});
           break;
         case 2:
-          this.$router.push({path:'/editblog'});
+          this.$router.push({path:'/blog'});
           break;
       }
     },

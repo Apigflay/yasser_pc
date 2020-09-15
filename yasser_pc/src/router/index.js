@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Blog from '../views/Blog.vue'
 import EditBlog from '../views/EditBlog.vue'
 import No404 from '../views/No404.vue'
 import TestDemo from '../views/TestDemo.vue'
@@ -25,6 +26,15 @@ const routes = [
     meta:{
       name:'登录',
       index:[{name:'登录',path:'/login'}]
+    }
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog,
+    meta:{
+      name:'博客',
+      index:[{name:'博客',path:'/blog'}]
     }
   },
   {

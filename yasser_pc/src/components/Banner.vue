@@ -1,16 +1,43 @@
 <template>
-  <div class="BannerArea">
-        <div class="swiperWarp">
+  <div class="swiperWarp">
+        <div class="bannerArea">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(item,index) in bannerData" :key="index">
-                        <img src="@/assets/imgs/banner/nature-1.jpg" alt="">
+                    <!-- <div class="swiper-slide" v-for="(item,index) in bannerData" :key="index">
+                        <img :src="item" alt="">
+                    </div> -->
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-2.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-3.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-4.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-5.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-6.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-7.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-8.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img" src="../assets/imgs/banner/nature-9.jpg" alt="">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 
-                <!-- <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div> -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
                 
                 <!-- <div class="swiper-scrollbar"></div> -->
             </div>
@@ -26,7 +53,9 @@ export default {
   name: 'Banner',
   data(){
       return {
-         bannerData:['']
+         bannerData:['../assets/imgs/banner/nature-1.jpg','../assets/imgs/banner/nature-2.jpg','@/assets/imgs/banner/nature-3.jpg',
+         '@/assets/imgs/banner/nature-4.jpg','@/assets/imgs/banner/nature-5.jpg','@/assets/imgs/banner/nature-6.jpg',
+         '@/assets/imgs/banner/nature-7.jpg','@/assets/imgs/banner/nature-8.jpg','@/assets/imgs/banner/nature-9.jpg',]
       }
   },
   computed:{
@@ -75,9 +104,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss" scoped>
-.BannerArea{
-    height: 600px;
+.swiperWarp{
+    height: 1024px;
     width: 100%;
+}
+.bannerArea{
+    margin: auto;
+    height: 1024px;
+    width: 1024px;
+    .swiper-container{
+        height: 1024px;
+        width: 1024px; 
+        .img{
+            height: 1024px;
+            width: 1024px;
+        }
+    }
 }
 
 </style>
