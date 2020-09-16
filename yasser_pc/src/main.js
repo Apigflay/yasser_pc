@@ -13,6 +13,12 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css' // import style
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
+// import with ES6
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+Vue.use(mavonEditor)
+
 import Global_ from './lib/js/GlobalObj.js'   //全局对象
 Vue.prototype.GLOBAL = Global_; //添加Global_到Vue的原型对象上
 

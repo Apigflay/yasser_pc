@@ -2,7 +2,13 @@
   <div class="loginPages">
         <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
         <button @click="goLogin">login</button>
-
+        <div class="markdownWrap">
+            <mavon-editor v-model="editorValue"/>
+        </div>
+        <button @click="getEditorValue">get editor msg</button>
+        <div class="markdownWrap">
+            <mavon-editor v-model="editorValue2"/>
+        </div>
   </div>
 </template>
 
@@ -20,6 +26,8 @@ export default {
         accountNumber:'',
         password:'',
         file:null,
+        editorValue:'',
+        editorValue2:'',
       }
   },
   created() {
@@ -93,6 +101,10 @@ export default {
 
 
 
+    },
+    getEditorValue:function(){
+        console.log(this.editorValue)
+        this.editorValue2=this.editorValue;
     }
   },
   beforeMount(){
@@ -110,6 +122,11 @@ export default {
 .icon {
     width: 35px!important;
     height: 35px!important;
+}
+.markdownWrap{
+    width: 100%;
+    min-height: 600px;
+    background: #eee;
 }
 </style>
 

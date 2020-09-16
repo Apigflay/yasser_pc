@@ -216,6 +216,10 @@ addPicture(formData,'/upload/addPic').then(//
     }
 )
 
+# 博客编辑
+
+npm install mavon-editor --save
+
 # 权限 分类 博客展示页面
 
 
