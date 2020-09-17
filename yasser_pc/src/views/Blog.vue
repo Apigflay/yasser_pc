@@ -3,6 +3,7 @@
         <div class="navWrap">
             <div class="navArea">
                 <div class="navList">
+                    <span class="per">首页</span>
                     <span class="per">发现</span>
                     <span class="per">我的主页</span>
                     <span class="per">消息</span>

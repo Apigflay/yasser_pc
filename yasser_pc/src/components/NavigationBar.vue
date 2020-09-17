@@ -59,6 +59,8 @@
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-E"></use>
                 </svg>
+
+                <div class="visits">已访问量:{{visits}}</div>
             </div>
             <div class="wel-function">
                 <svg class="icon signOut" aria-hidden="true" v-if="isLogin" @click="goLogin(0)">
@@ -104,6 +106,7 @@
 </template>
 
 <script>
+import {getIp} from "../lib/http/tools.js"
 export default {
   name: 'NavigationBar',
   data(){
@@ -112,6 +115,7 @@ export default {
           languageG:this.language,//1 cn 2 en 3 tc
           languageArea:false,
           mathNum:num,//随机数  1~3
+          visits:null,
       }
   },
   props: ['language'],
@@ -119,6 +123,9 @@ export default {
       isLogin(){
           return this.$store.getters['AllallIsLogin']
       }
+  },
+  created(){
+      this.getStatisticsMsg()
   },
   methods:{
       goLanguageArea:function(id){
@@ -154,6 +161,19 @@ export default {
             this.$router.push({path:'/login'});
           }
 
+      },
+      getStatisticsMsg:function(){
+          var str ={};
+          // var str = {accountNumber:this.accountNumber,password:this.password};
+        getIp(str,'/tools').then(//
+            (res) => {
+                console.log(res.data.total)
+                this.visits=res.data.total;
+            },
+            (err) => {
+            console.log('get err', err)
+            }
+        )
       }
   }
 }
@@ -186,6 +206,10 @@ export default {
         .kong{
             width: 10px;
             height: 14px;
+        }
+        .visits{
+            padding-left: 20px;
+            color: #be5000;
         }
     }
     .wel-function{
