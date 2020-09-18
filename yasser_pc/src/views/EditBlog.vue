@@ -1,6 +1,11 @@
 <template>
-  <div class="loginPages">
-        <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
+  <div class="editPages">
+        <div class="editWrap">
+            <div class="menuArea"></div>
+            <div class="articleArea"></div>
+            <div class="markdownArea"></div>
+        </div>
+        <!-- <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
         <button @click="goLogin">login</button>
         <div class="markdownWrap">
             <mavon-editor v-model="editorValue"/>
@@ -8,7 +13,7 @@
         <button @click="getEditorValue">get editor msg</button>
         <div class="markdownWrap">
             <mavon-editor v-model="editorValue2"/>
-        </div>
+        </div> -->
   </div>
 </template>
 
@@ -114,8 +119,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.loginPages{
+<style lang="scss" scoped>
+.editPages{
   width: 100%;
   height: 100%;
 }
@@ -123,6 +128,39 @@ export default {
     width: 35px!important;
     height: 35px!important;
 }
+.editWrap{
+    width: 100%;
+    height: 100%;
+    // background: #eee;
+    display: flex;
+    .menuArea{
+        height: 100%;
+        width: 230px;
+        background: #404040;
+        overflow-y: scroll;
+    }
+    .menuArea::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+    }
+    .menuArea {
+        scrollbar-width: none; /* firefox */
+        -ms-overflow-style: none; /* IE 10+ */
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .articleArea{
+        height: 100%;
+        width: 350px;
+        // background: red;
+        overflow-y: scroll;
+    }
+    .markdownArea{
+        flex: 1;
+        // background: yellow;
+    }
+}
+
+
 .markdownWrap{
     width: 100%;
     min-height: 600px;
