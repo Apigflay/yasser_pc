@@ -1,7 +1,9 @@
 <template>
   <div class="editPages">
         <div class="editWrap">
-            <div class="menuArea"></div>
+            <div class="menuArea">
+                <div class="homeBtn" @click="goPages(0)">回首页</div>
+            </div>
             <div class="articleArea"></div>
             <div class="markdownArea"></div>
         </div>
@@ -55,6 +57,13 @@ export default {
         // }
   },
   methods:{
+    goPages:function(pageId){
+        switch(pageId){
+            case 0:
+                this.$touter.push({path:'/blog'});
+            break;
+        }
+    },
     seletFile:function(ev){
         console.log(ev.target.files)
         console.log(ev.target.files[0])
@@ -138,6 +147,16 @@ export default {
         width: 230px;
         background: #404040;
         overflow-y: scroll;
+        .homeBtn{
+            color:#ec7259;
+            border: 1px solid rgba(236,114,89,.8);
+            height: 42px;
+            width: 210px;
+            border-radius: 20px;
+            line-height: 42px;
+            margin:30px 9px;
+            cursor: pointer;
+        }
     }
     .menuArea::-webkit-scrollbar {
         display: none; /* Chrome Safari */
