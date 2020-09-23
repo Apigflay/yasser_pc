@@ -3,6 +3,15 @@
         <div class="editWrap">
             <div class="menuArea">
                 <div class="homeBtn" @click="goPages(0)">回首页</div>
+                <div class="addListBtn" @click="newList(0)">
+                    <svg class="icon addBtn" aria-hidden="true">
+                        <use xlink:href="#icon-jiahao1"></use>
+                    </svg>
+                    <span>新建文集</span>
+                </div>
+                <div class="">
+
+                </div>
             </div>
             <div class="articleArea"></div>
             <div class="markdownArea"></div>
@@ -57,12 +66,15 @@ export default {
         // }
   },
   methods:{
-    goPages:function(pageId){
+    goPages:function(pageId){//页面跳转
         switch(pageId){
             case 0:
-                this.$touter.push({path:'/blog'});
+                this.$router.push({path:'/blog'});
             break;
         }
+    },
+    newList:function(){//新建文集
+        
     },
     seletFile:function(ev){
         console.log(ev.target.files)
@@ -156,6 +168,19 @@ export default {
             line-height: 42px;
             margin:30px 9px;
             cursor: pointer;
+        }
+        .addListBtn{
+            display: flex;
+            align-items: center;
+            width: 200px;
+            margin: auto;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            .addBtn{
+                height: 14px!important;
+                width: 14px!important;
+            }
         }
     }
     .menuArea::-webkit-scrollbar {
