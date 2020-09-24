@@ -3,7 +3,7 @@
         <div class="navWrap">
             <div class="navArea">
                 <div class="navList">
-                    <span class="per">首页</span>
+                    <span class="per" @click="goPages(1)">首页</span>
                     <span class="per">发现</span>
                     <span class="per">我的主页</span>
                     <span class="per">消息</span>
@@ -65,7 +65,10 @@ export default {
       goPages:function(pageId){
           switch(pageId){
             case 0:
-            this.$router.push({path:'/editblog'});
+                this.$router.push({path:'/editblog'});
+            break;
+            case 1:
+                this.$router.push({path:'/'});
             break;
         }
       },

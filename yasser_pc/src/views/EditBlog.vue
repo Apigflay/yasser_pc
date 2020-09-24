@@ -9,8 +9,34 @@
                     </svg>
                     <span>新建文集</span>
                 </div>
-                <div class="">
-
+                <div class="newlyBuild" v-if="newlyBuildStatus">
+                    <input class="addInput" type="text" v-model="collectionOfWorks">
+                    <button class="tBtn" @click="newList(1)">提交</button>
+                    <button class="qBtn" @click="newList(2)">取消</button>
+                </div>
+                <div class="listArea">
+                    <template  v-for="(item,index) in menuList" >
+                        <div class="listPer" :key="index" :class="index==activiteId?'listPerActive':''" @click="newList(3,index)">
+                            <span>{{item.name}}--{{index}}</span>
+                            <svg class="icon" aria-hidden="true" v-if="index==activiteId">
+                                <use xlink:href="#icon-shezhi"></use>
+                            </svg>
+                        </div>
+                    </template>
+                </div>
+                <div class="desetBtn">
+                    <span class="spanDeset">
+                        <svg class="icon icon1" aria-hidden="true">
+                            <use xlink:href="#icon-shezhi"></use>
+                        </svg>
+                        设置
+                    </span>
+                    <span class="spanQuestion">
+                        遇到问题
+                        <svg class="icon icon1" aria-hidden="true">
+                            <use xlink:href="#icon-wenhao"></use>
+                        </svg>
+                    </span>
                 </div>
             </div>
             <div class="articleArea"></div>
@@ -39,6 +65,10 @@ export default {
   },
   data(){
       return {
+          newlyBuildStatus:false,//初始状态
+          menuList:[{name:'日记本',type:1},{name:'vue+express',type:2},{name:'小和尚和花和尚的故事',type:3}],//菜单
+          activiteId:0,//初始选中菜单
+          collectionOfWorks:'',//新建文集名
         accountNumber:'',
         password:'',
         file:null,
@@ -47,6 +77,9 @@ export default {
       }
   },
   created() {
+      console.log(this.$store.getters['AllallLoginInfo'])
+      console.log(JSON.stringify([{type:1,name:'日记本'}]))
+      
   },
   computed:{
     language(){
@@ -73,8 +106,23 @@ export default {
             break;
         }
     },
-    newList:function(){//新建文集
-        
+    newList:function(id,index){//新建文集
+        switch(id){
+            case 0://0 新建文集
+                this.newlyBuildStatus=true;
+            break;
+            case 1://提交
+                console.log(this.collectionOfWorks)
+                this.menuList.push({name:this.collectionOfWorks,type:3})
+                this.newlyBuildStatus=false;
+            break;
+            case 2://取消
+                this.newlyBuildStatus=false;
+            break;
+            case 3://点击per文集
+                this.activiteId=index;
+            break;
+        }
     },
     seletFile:function(ev){
         console.log(ev.target.files)
@@ -154,11 +202,12 @@ export default {
     height: 100%;
     // background: #eee;
     display: flex;
-    .menuArea{
+    .menuArea{//菜单栏
         height: 100%;
         width: 230px;
         background: #404040;
         overflow-y: scroll;
+        position: relative;
         .homeBtn{
             color:#ec7259;
             border: 1px solid rgba(236,114,89,.8);
@@ -182,6 +231,101 @@ export default {
                 width: 14px!important;
             }
         }
+        .newlyBuild{//新建
+            width: 200px;
+            padding: 20px 15px;
+            transition:transform 1s;
+            .addInput{
+                width: 198px;
+                height: 35px;
+                color: #ccc;
+                background-color: #595959;
+                border: 1px solid #333;
+                text-indent: 8px;
+                margin-bottom: 10px;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            .tBtn{
+                border: 1px solid #42c02e;
+                background: #404040;
+                color:#42c02e;;
+                padding: 5px 15px;
+                outline: none;
+                margin-right: 10px;
+                border-radius: 16px;
+            }
+            .tBtn:hover{
+                color:#41d629;
+            }
+            .qBtn{
+                border: 1px solid #404040;;//#404040;
+                background: #404040;
+                color:#999;
+                padding: 5px 15px;
+                outline: none;
+                margin-left: 10px;
+                border-radius: 16px;
+            }
+            .qBtn:hover{
+                color:#fff;
+            }
+        }
+        .listArea{
+            width: 230px;
+            padding: 0px 0px 50px 0px;
+            .listPer{
+                width: 230px;
+                padding: 0px 15px 0px 15px;
+                height:40px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color:#f2f2f2;
+                font-size: 16px;
+                cursor: pointer;
+                border-left: 3px solid #404040;
+                span{
+                    max-width: 170px;
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                .icon{
+                    width: 16px!important;
+                    height: 16px!important;
+                }
+            }
+            .listPerActive{
+                border-left: 3px solid #ec7259;
+                background-color: #666;
+            }
+            .listPer:hover{
+                background-color: #666;
+            }
+        }
+        .desetBtn{//设置
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            bottom: 0;
+            padding: 0 15px;
+            color: #999;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            .spanDeset:hover{
+                color: #fff;
+            }
+            .icon1{
+                color: #999;
+                width: 16px!important;
+                height: 16px!important;
+            }
+        }
     }
     .menuArea::-webkit-scrollbar {
         display: none; /* Chrome Safari */
@@ -192,7 +336,7 @@ export default {
         overflow-x: hidden;
         overflow-y: auto;
     }
-    .articleArea{
+    .articleArea{//标题栏
         height: 100%;
         width: 350px;
         // background: red;
