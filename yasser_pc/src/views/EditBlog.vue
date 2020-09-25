@@ -1,7 +1,7 @@
 <template>
   <div class="editPages">
         <div class="editWrap">
-            <div class="menuArea">
+            <div class="menuArea"><!-- 文集 -->
                 <div class="homeBtn" @click="goPages(0)">回首页</div>
                 <div class="addListBtn" @click="newList(0)">
                     <svg class="icon addBtn" aria-hidden="true">
@@ -39,8 +39,40 @@
                     </span>
                 </div>
             </div>
-            <div class="articleArea"></div>
-            <div class="markdownArea"></div>
+            <div class="articleArea"><!-- 文章标题 -->
+                <div class="addArticleBtn" @click="newList(4)">
+                    <svg class="icon addBtn" aria-hidden="true">
+                        <use xlink:href="#icon-jiahao1"></use>
+                    </svg>
+                    <span>新建文章</span>
+                </div>
+                <div class="articleListArea">
+                    <template v-for="(item,index) in articleList">
+                        <div class="articlePer" :key="index" :class="index==activiteArticleId?'articlePerAc':''" @click="newList(5,index)">
+                            <div class="aNum">
+                                <svg class="icon addBtn" aria-hidden="true">
+                                    <use xlink:href="#icon-wenzhang"></use>
+                                </svg>
+                                <div>字数:0</div>
+                            </div>
+                            <div class="aTitle">{{item.title}}</div>
+                            <div class="aIcon" v-if="index==activiteArticleId">
+                                <svg class="icon addBtn" aria-hidden="true">
+                                    <use xlink:href="#icon-shezhi"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="markdownArea"><!-- 编辑器 -->
+                <div class="statusArea"></div>
+                <h3 class="markTitle">{{articleList[activiteArticleId].title}}</h3>
+                <div class="markdownWrap">
+                    <mavon-editor class="edit" v-model="editorValue"/>
+
+                </div>
+            </div>
         </div>
         <!-- <input type="file" accept="image/*" @change="seletFile($event)" multiple="multiple"> 
         <button @click="goLogin">login</button>
@@ -69,6 +101,12 @@ export default {
           menuList:[{name:'日记本',type:1},{name:'vue+express',type:2},{name:'小和尚和花和尚的故事',type:3}],//菜单
           activiteId:0,//初始选中菜单
           collectionOfWorks:'',//新建文集名
+          articleList:[{id:1,type:1,article:'',title:'2020-09-25'},{id:2,type:2,artile:'',title:'小新的问'}],//文章标题列表
+          articleValue:'',//文章内容
+          arctcleTicle:'',//文章标题
+          activiteArticleId:0,//初始选中文章id
+
+
         accountNumber:'',
         password:'',
         file:null,
@@ -121,6 +159,12 @@ export default {
             break;
             case 3://点击per文集
                 this.activiteId=index;
+            break;
+            case 4://新建文章
+                this.articleList.push({id:4,type:4,article:'',title:'2020-09-25'})
+            break;
+            case 5://per文章点击
+                this.activiteArticleId=index;
             break;
         }
     },
@@ -341,19 +385,84 @@ export default {
         width: 350px;
         // background: red;
         overflow-y: scroll;
+        .addArticleBtn{
+            height: 60px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .addBtn{
+                height: 16px!important;
+                width: 16px!important;
+                background: #000;
+                color: #fff;
+                border-radius: 50%;
+                margin-left: 20px;
+                margin-right: 5px;
+            }
+        }
+        .addArticleBtn:hover{
+            opacity: 0.9;
+        }
+        .articlePer{
+            height: 90px;
+            border-left:5px solid #fff;
+            color:#595959;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            .aNum{
+                margin-left: 20px;
+            }
+            .aTitle{
+                width: 200px;
+                margin:0px 15px 0px 20px;
+                text-align: left;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+            .aIcon{
+                .icon{
+                    width: 16px!important;
+                    height: 16px!important;
+                }
+            }
+        }
+        .articlePer:hover{
+            background:#e6e6e6;
+        }
+        .articlePerAc{
+            border-left:5px solid #ec7259;
+            background:#e6e6e6;
+        }
     }
-    .markdownArea{
+    .markdownArea{//编辑器
         flex: 1;
-        // background: yellow;
+        display: flex;
+        flex-direction: column;
+        .statusArea{
+            height: 30px;
+        }
+        .markTitle{
+            height: 50px;
+        }
+        .markdownWrap{
+            flex: 1;
+            .edit{
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 }
 
 
-.markdownWrap{
-    width: 100%;
-    min-height: 600px;
-    background: #eee;
-}
+// .markdownWrap{
+//     width: 100%;
+//     min-height: 600px;
+//     background: #eee;
+// }
 </style>
 
 
