@@ -69,7 +69,7 @@
                 <div class="statusArea"></div>
                 <h3 class="markTitle">{{articleList[activiteArticleId].title}}</h3>
                 <div class="markdownWrap">
-                    <mavon-editor class="edit" v-model="editorValue"/>
+                    <mavon-editor ref="md" class="edit" v-model="editorValue" @save="saveEdit" @imgAdd="imgAddEdit" @imgDel="imgDelEdit" />
 
                 </div>
             </div>
@@ -167,6 +167,58 @@ export default {
                 this.activiteArticleId=index;
             break;
         }
+    },
+    saveEdit:function(){//edit保存 
+        console.log('keep clicked')
+        console.log(this.editorValue)
+    },
+    imgAddEdit:function(pos, $file){
+        console.log('add clicked')
+        console.log(pos)
+        var str = this.file;
+        console.log(str)
+        // var url = URL.createObjectURL(file); 
+        var formData = new FormData();
+        formData.append('file', $file);
+        addPicture(formData,'/upload/addPic').then(//
+            (res) => {
+                console.log(res.data)
+                if(res.data.code==100){
+                    // this.$Toast(true,res.data.msg)
+                    // this.$store.commit('set_allIsLogin',true);
+                    // this.$store.commit('set_allLoginInfo',res.data.data[0]);
+                    // this.$router.push({path:'/'});
+                    console.log(this.$refs.md)
+                    this.$refs.md.$img2Url(pos,res.data.ip+res.data.url);
+                }else{
+                    this.$Toast(true,res.data.msg)
+                }
+            },
+            (err) => {
+            console.log('get err', err)
+            }
+        )
+        // 第一步.将图片上传到服务器.
+        // var formdata = new FormData();
+        // formdata.append('image', $file);
+        // axios({
+        //     url: 'server url',
+        //     method: 'post',
+        //     data: formdata,
+        //     headers: { 'Content-Type': 'multipart/form-data' },
+        // }).then((url) => {
+        //     // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+        //     /**
+        //     * $vm 指为mavonEditor实例，可以通过如下两种方式获取
+        //     * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
+        //     * 2. 通过$refs获取: html声明ref : `<mavon-editor ref=md ></mavon-editor>，`$vm`为 `this.$refs.md`
+        //     */
+        //     $vm.$img2Url(pos, url);
+        // })
+        
+    },
+    imgDelEdit:function(){
+        console.log('del clicked')
     },
     seletFile:function(ev){
         console.log(ev.target.files)

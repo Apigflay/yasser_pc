@@ -219,6 +219,12 @@ addPicture(formData,'/upload/addPic').then(//
 # 博客编辑
 
 npm install mavon-editor --save
+https://github.com/hinesboy/mavonEditor       ---api
+
+event
+save(保存)
+imgAdd(上传)
+imgDel(删除)
 
 # 权限 分类 博客展示页面
 
