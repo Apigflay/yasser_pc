@@ -21,7 +21,7 @@
 export default {
   name: 'TargetProgress',
   data(){
-      const persent = 0.02;
+      const persent = 0.03;
       return {
           width:1024*persent,
           persNum:persent*100,
