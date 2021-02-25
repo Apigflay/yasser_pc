@@ -250,7 +250,7 @@ export default {
         // var url = URL.createObjectURL(file); 
         var formData = new FormData();
         formData.append('file',this.file);
-        addPicture(formData,'/upload/addPic').then(//
+        addPicture(formData,'http://173.248.234.215:86/H5/PhoTest.aspx').then(//
             (res) => {
                 console.log(res.data)
                 if(res.data.code==100){

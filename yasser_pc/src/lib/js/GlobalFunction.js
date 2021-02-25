@@ -32,7 +32,9 @@ export function Get(obj,url){
  * @returns {*}
  */
 export function Post (obj,url) {
+	console.log(url)
 	var str = {params:encodeURIComponent(encrypt(JSON.stringify(obj)))};
+	console.log(str)
 	return new Promise((resolve, reject) => {
 		axios({
 			// url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
@@ -59,8 +61,8 @@ export function Upload (obj,url) {
 	// var str = {params:encodeURIComponent(encrypt(JSON.stringify(obj)))};
 	return new Promise((resolve, reject) => {
 		axios({
+			url: url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
 			// url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
-			url: '/api'+url, //仅为示例，并非真实接口地址。 https://live.mycat1314.com/
 			data: obj,
 			method:'POST'
 		})

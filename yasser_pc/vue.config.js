@@ -17,8 +17,8 @@ module.exports = {
 		disableHostCheck: true, //webpack4.0 开启热更新
     open:true,
     proxy: {
-      '/api': {
-        target: 'http://192.168.161.89:3000/api',// http://192.168.161.89:3000/api HZtest  http://192.168.12.198:3000/api line2   http://192.168.11.198:3000/api line1  http://192.168.11.199:3000/api  line1
+      '/api': {//hk 192.168.160.238
+        target: 'http://192.168.160.238:3000/api',// http://192.168.161.89:3000/api HZtest  http://192.168.12.198:3000/api line2   http://192.168.11.198:3000/api line1  http://192.168.11.199:3000/api  line1
         ws: false,
         changeOrigin: true,
         pathRewrite: {
